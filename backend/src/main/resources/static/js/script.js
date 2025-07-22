@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const div = document.createElement('div');
     div.className = 'product-card';
     div.innerHTML = `
-      <img src="/assets/${p.imageUrl}" alt="${p.name}">
+      <img src="assets/${p.imageUrl}" alt="${p.name}">
       <h3>${p.name}</h3>
       <p>${p.description}</p>
       <p><strong>₹${p.price}</strong></p>
