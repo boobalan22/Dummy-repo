@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Jewellery Collection</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Elegant handmade jewellery collection. Explore rings, necklaces, bracelets and more.">
+  <title>Elegant Jewellery</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body>
-    <header>
-        <h1>Elegant Jewellery</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Collections</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-    <main>
-        <section id="products">
-            <!-- Products will load dynamically here -->
-        </section>
-    </main>
-    <footer>
-        &copy; 2025 Elegant Jewellery
-    </footer>
-    <script src="js/script.js"></script>
+  <header>
+    <h1>Elegant Jewellery</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h2 data-aos="fade-up">Discover Timeless Beauty</h2>
+      <p data-aos="fade-up" data-aos-delay="200">Explore our curated collection of fine jewellery.</p>
+    </section>
+    <section id="products" class="grid"></section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Elegant Jewellery</p>
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init();</script>
+  <script src="js/script.js"></script>
 </body>
 </html>
-
