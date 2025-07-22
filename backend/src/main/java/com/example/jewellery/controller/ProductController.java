@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/api/products")
+@CrossOrigin(origins = "*") // allow frontend JS to call backend
 public class ProductController {
     @Autowired
     private ProductService productService;
 
     @GetMapping
-    public List<Product> getAllProducts() {
+    public List<Product> getProducts() {
         return productService.getAllProducts();
     }
 }
