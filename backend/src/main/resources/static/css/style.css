@@ -1,51 +1,81 @@
+/* Reset & base styles */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0; padding: 0;
-    background: #fff;
-    color: #333;
-}
-header {
-    background: gold;
-    padding: 20px;
-    text-align: center;
-}
-header h1 {
-    margin: 0;
-    font-size: 2em;
-}
-nav a {
-    margin: 0 10px;
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-}
-#products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-.product-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    background: #fafafa;
-}
-.product-card img {
-    width: 100%;
-    height: auto;
-}
-.product-card h3 {
-    margin: 10px 0 5px;
-}
-.product-card p {
-    font-size: 0.9em;
-    margin: 0 10px 10px;
-}
-footer {
-    background: #f5f5f5;
-    text-align: center;
-    padding: 10px;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fffdf9;
+  color: #333;
 }
 
+header {
+  background: rgb(59, 241, 223);
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Main content */
+main {
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Product grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Product card style */
+.product-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* ⭐ Fix all images to same size & alignment */
+.product-card img {
+  width: 100%;          /* full width */
+  height: 200px;        /* fixed height */
+  object-fit: cover;    /* keep aspect ratio, crop if needed */
+  display: block;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+}
+
+.product-card p {
+  margin: 0 10px 10px;
+  font-size: 0.9em;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #f5f5f5;
+}
