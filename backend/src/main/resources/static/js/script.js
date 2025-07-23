@@ -1,52 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
   const products = [
-    { name: "Diamond Ring", description: "Elegant diamond ring", price: 10000, imageUrl: "product1.jpg" },
+    { name: "Diamond Ring", description: "Elegant diamond ring with brilliant cut", price: 10000, imageUrl: "product1.jpg" },
     { name: "Gold Necklace", description: "Traditional gold necklace", price: 25000, imageUrl: "product2.jpg" },
     { name: "Pearl Earrings", description: "Classic pearl earrings", price: 8000, imageUrl: "product3.jpg" },
-    { name: "Diamond Ring", description: "Bracelets", price: 10000, imageUrl: "product4.jpg" },
-    { name: "Gold Necklace", description: "Brooches", price: 25000, imageUrl: "product5.jpg" },
-    { name: "Pearl Earrings", description: "Anklets", price: 8000, imageUrl: "product6.jpg" },
-    { name: "Pearl Earrings", description: "Pendants", price: 8000, imageUrl: "product7.jpg" },
-    { name: "Pearl Earrings", description: "Mangalsutra", price: 8000, imageUrl: "product8.jpg" },
-    { name: "Diamond Ring", description: "Bling.", price: 10000, imageUrl: "product9.jpg" },
-    { name: "Gold Necklace", description: "Headband", price: 25000, imageUrl: "product10.jpg" },
-    { name: "Pearl Earrings", description: "Crowns", price: 8000, imageUrl: "product11.jpg" },
-    { name: "Pearl Earrings", description: "Hairclip", price: 8000, imageUrl: "product12.jpg" }
-    // 👉 Add more products if needed
+    { name: "Designer Bracelet", description: "Elegant designer bracelets", price: 12000, imageUrl: "product4.jpg" },
+    { name: "Antique Brooch", description: "Vintage style brooches", price: 15000, imageUrl: "product5.jpg" },
+    { name: "Silver Anklet", description: "Beautiful silver anklets", price: 6000, imageUrl: "product6.jpg" },
+    { name: "Crystal Pendant", description: "Sparkling crystal pendants", price: 9000, imageUrl: "product7.jpg" },
+    { name: "Gold Mangalsutra", description: "Traditional mangalsutra", price: 35000, imageUrl: "product8.jpg" },
+    { name: "Diamond Bling", description: "Luxury diamond bling", price: 45000, imageUrl: "product9.jpg" },
+    { name: "Royal Headband", description: "Elegant royal headband", price: 18000, imageUrl: "product10.jpg" }
   ];
 
   const productsSection = document.getElementById('products');
+  const toggleBtn = document.getElementById('toggleBtn');
   let productsVisible = false;
 
-  // Create toggle button
-  const toggleBtn = document.createElement('button');
-  toggleBtn.textContent = "Show Products";
-  toggleBtn.style.margin = "20px";
-  toggleBtn.style.padding = "10px 20px";
-  toggleBtn.style.fontSize = "1rem";
-  document.body.insertBefore(toggleBtn, productsSection);
-
-  // Create product cards (but don't display yet)
-  products.forEach(p => {
+  // Create product cards
+  products.forEach((product, index) => {
     const div = document.createElement('div');
     div.className = 'product-card';
+    div.setAttribute('data-aos', 'fade-up');
+    div.setAttribute('data-aos-delay', (index * 100).toString());
+    
     div.innerHTML = `
-      <img src="assets/${p.imageUrl}" alt="${p.name}">
-      <h3>${p.name}</h3>
-      <p>${p.description}</p>
-      <p><strong>₹${p.price}</strong></p>
+      <img src="assets/${product.imageUrl}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/280x250/e0e0e0/666?text=Product+Image'">
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <p class="description">${product.description}</p>
+        <p class="price">₹${product.price.toLocaleString()}</p>
+      </div>
     `;
     productsSection.appendChild(div);
   });
 
-  // Initially hide products section
-  productsSection.style.display = "none";
-
-  // Toggle show/hide
-  toggleBtn.addEventListener("click", () => {
-    productsVisible = !productsVisible;
-    productsSection.style.display = productsVisible ? "grid" : "none";
-    toggleBtn.textContent = productsVisible ? "Hide Products" : "Show Products";
-  });
+  // Toggle show/hide products
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      productsVisible = !productsVisible;
+      
+      if (productsVisible) {
+        productsSection.style.display = "grid";
+        toggleBtn.textContent = "Hide Products";
+        // Refresh AOS for newly visible elements
+        setTimeout(() => {
+          if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+          }
+        }, 100);
+      } else {
+        productsSection.style.display = "none";
+        toggleBtn.textContent = "Show Products";
+      }
+    });
+  }
 });
-
